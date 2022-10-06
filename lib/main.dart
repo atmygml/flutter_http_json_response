@@ -2,6 +2,7 @@
 
 import 'dart:io';
 import 'dart:ui';
+// import 'dart:developer';
 
 import 'dart:async';
 import 'dart:convert';
@@ -104,14 +105,14 @@ class MyHomePage extends StatelessWidget {
           future: fetchUserDetails(http.Client()),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              // print(snapshot);
+              // log(snapshot.toString());
               return Center(
-                  child: Text(
-                'An error has occurred!',
-              )
-                  // child: Text('${snapshot.error}'),
-                  );
+                child: Text(
+                  'An error has occurred!',
+                ),
+              );
             } else if (snapshot.hasData) {
+              // log(snapshot.toString());
               return UserDetailsList(userDetails: snapshot.data!);
             } else {
               return const Center(
